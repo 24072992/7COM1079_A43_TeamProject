@@ -18,3 +18,23 @@ hist(df_clean$Total_Accidents_2019,
      ylab = "Number of States/UTs",
      col = "red",
      border = "black")
+
+#Total number of road accidents per lakh population graph
+
+h <- hist(df_clean$Rate_Per_Lakh_2019, 
+          main = "Histogram of Accident Rate per Lakh Population - 2019",
+          xlab = "Accident Rate per Lakh Population",
+          ylab = "Number of States/UTs",
+          col = "lightgreen",
+          border = "black")
+
+xfit <- seq(min(df_clean$Rate_Per_Lakh_2019),
+            max(df_clean$Rate_Per_Lakh_2019),
+            length = 100)
+
+yfit <- dnorm(xfit, 
+              mean = mean(df_clean$Rate_Per_Lakh_2019),
+              sd = sd(df_clean$Rate_Per_Lakh_2019))
+
+yfit <- yfit * diff(h$mids[1:2]) * length(df_clean$Rate_Per_Lakh_2019)
+lines(xfit, yfit, col = "red", lwd = 2)
