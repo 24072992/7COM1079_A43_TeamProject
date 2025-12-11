@@ -10,3 +10,11 @@ names(df_clean) <- c("State", "Total_Accidents_2019", "Rate_Per_Lakh_2019")
 df_clean <- df_clean[df_clean$State != "Total", ]
 df_clean <- df_clean[!is.na(df_clean$Rate_Per_Lakh_2019), ]
 View(df_clean)
+
+#Total Number Of Road Accidents Graph
+hist(df_clean$Total_Accidents_2019,
+     main = "Histogram of Total Number of Road Accidents (2019)",
+     xlab = "Total Accidents (Count)",
+     ylab = "Number of States/UTs",
+     col = "red",
+     border = "black")
