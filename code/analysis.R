@@ -38,3 +38,24 @@ yfit <- dnorm(xfit,
 
 yfit <- yfit * diff(h$mids[1:2]) * length(df_clean$Rate_Per_Lakh_2019)
 lines(xfit, yfit, col = "red", lwd = 2)
+
+#scatterplot for analysis
+
+plot(df_clean$Total_Accidents_2019,
+     df_clean$Rate_Per_Lakh_2019,
+     main = "Scatterplot: Total Accidents vs Accident Rate (2019)",
+     xlab = "Total Number of Road Accidents (2019)",
+     ylab = "Accident Rate per Lakh Population (2019)",
+     pch = 19,
+     col = "blue")
+abline(lm(df_clean$Rate_Per_Lakh_2019 ~ df_clean$Total_Accidents_2019),
+       col = "red", lwd = 2)
+
+# Run Spearman correlation test
+# This checks the relationship between total accidents and accident rate per lakh population
+# Spearman is used because the data is not normally distributed
+
+cor.test(df_clean$Total_Accidents_2019,
+         df_clean$Rate_Per_Lakh_2019,
+         method = "spearman")
+
