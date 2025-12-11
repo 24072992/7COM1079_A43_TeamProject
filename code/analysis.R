@@ -8,4 +8,5 @@ df_clean <- df[, c("States/UTs",
 
 names(df_clean) <- c("State", "Total_Accidents_2019", "Rate_Per_Lakh_2019")
 df_clean <- df_clean[df_clean$State != "Total", ]
+df_clean <- df_clean[!is.na(df_clean$Rate_Per_Lakh_2019), ]
 View(df_clean)
